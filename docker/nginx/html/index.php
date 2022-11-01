@@ -19,7 +19,7 @@
 			//タイトル・説明書き
 			top_desc(); 
 
-			level1();
+			print_questions();
 
 		?>
 

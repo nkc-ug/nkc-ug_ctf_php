@@ -65,7 +65,7 @@ if (isset($_SESSION['id'])) {
 	$status_docs = <<<EOD
 	<li>
 		<form class="form" method="post" action="login.php">
-			<input class="form-control input-sm" name="id" placeholder="UserId" value="${_GET["id"]}">
+			<input class="form-control input-sm" name="id" placeholder="UserId">
 			<input class="form-control input-sm" name="password" type="password" placeholder="Password">
 			<button style="margin-top: 5px;" type="submit" class="btn btn-primary btn-block">Login</button>
 		</form>
@@ -238,6 +238,15 @@ EOD;
 	print($html_docs);
 }
 
+function print_questions(){
+	if (!isset($_SESSION['id'])) {
+		print("<h2>右上のボタンからloginしてください↗↗</h2>");
+		return;
+	}
+	level1();
+
+}
+
 
 //問1
 function level1(){
@@ -267,17 +276,17 @@ function level1(){
 			<tbody>
 				
 				<tr>
-					<td><a href="./questions.php?qnum=1">[Misc] Test Problem</a></td>
+					<td><a href="./questions.php?q=1">[Misc] Test Question </a></td>
 					<td>10</td>
 					<td class="text-success">OK</td>
 				</tr>
 				<tr>
-					<td><a href="./questions.php?qnum=1">[Misc] Test Problem</a></td>
+					<td><a href="./questions.php?q=2">[Misc] Test Problem</a></td>
 					<td>10</td>
 					<td class="text-success">OK</td>
 				</tr>
 				<tr>
-					<td><a href="./questions.php?qnum=1">[Misc] Test Problem</a></td>
+					<td><a href="./questions.php?q=3">[Misc] Test Problem</a></td>
 					<td>10</td>
 					<td class="text-success">OK</td>
 				</tr>
