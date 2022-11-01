@@ -1,0 +1,61 @@
+{
+    "family": "my-ecs-task-def",
+    "containerDefinitions": [
+        {
+            "name": "nginx",
+            "image": "386040690284.dkr.ecr.us-west-2.amazonaws.com/nginx:latest",
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp"
+                }
+            ],
+            "dependsOn": [
+                {
+                    "containerName": "php",
+                    "condition": "START"
+                }
+            ],
+            "essential": true
+        },
+        {
+            "name": "php",
+            "image": "386040690284.dkr.ecr.us-west-2.amazonaws.com/php:latest",
+        },
+        {
+            "name": "mysql",
+            "image": "386040690284.dkr.ecr.us-west-2.amazonaws.com/mysql:latest",
+            "environment": [
+              {
+                "name": "MYSQL_ROOT_PASSWORD",
+                "value": "ropa20932060"
+              },
+              {
+                "name": "MYSQL_DATABASE",
+                "value": "app"
+              },
+              {
+                "name": "MYSQL_USER",
+                "value": "nkcuser"
+              },
+              {
+                "name": "MYSQL_PASSWORD",
+                "value": "nkcusersspa"
+              },
+              {
+                "name": "TZ",
+                "value": "Asia/Tokyo"
+              }
+            ]
+        }
+    ],
+    "executionRoleArn": "arn:aws:iam::386040690284:role/ecsTaskExecutionRole",
+    "taskRoleArn": "arn:aws:iam::386040690284:role/ecsTaskExecutionRole",
+    "cpu": "256",
+    "memory": "512",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ]
+}
