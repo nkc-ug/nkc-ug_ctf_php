@@ -26,7 +26,7 @@ connection.close()
 
 
 #画像生成・保存・描写
-img = qrcode.make('http://192.168.137.1/QRlogin.php?id={0}&password={1}'.format(id,password))
+img = qrcode.make('http://172.18.102.167/QRlogin.php?id={0}&password={1}'.format(id,password))
 img.save("{0}_{1}.png".format(id,name))
 cv2.namedWindow("Image",cv2.WINDOW_NORMAL)
 cv2.imshow("Image", cv2.imread("{0}_{1}.png".format(id,name), cv2.IMREAD_UNCHANGED))
