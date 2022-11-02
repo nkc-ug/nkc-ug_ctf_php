@@ -250,17 +250,22 @@ function print_questions(){
 
 //問1
 function level1(){
-	$html_docs = <<<EOD
+	$html_docs1 = <<<EOD
 	<div class="panel panel-default">
 	
 		<div class="panel-heading">
+			
+			<!--
 			<h3>Level 1</h3>
 			
+						
 			<div class="progress">
 				<div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
 					100%
 				</div>
 			</div>
+			-->
+
 		</div>
 		
 		<table class="table table-condensed">
@@ -274,30 +279,27 @@ function level1(){
 			</thead>
 			
 			<tbody>
-				
-				<tr>
-					<td><a href="./questions.php?q=1">[Misc] Test Question </a></td>
-					<td>10</td>
-					<td class="text-success">OK</td>
-				</tr>
-				<tr>
-					<td><a href="./questions.php?q=2">[Misc] Test Problem</a></td>
-					<td>10</td>
-					<td class="text-success">OK</td>
-				</tr>
-				<tr>
-					<td><a href="./questions.php?q=3">[Misc] Test Problem</a></td>
-					<td>10</td>
-					<td class="text-success">OK</td>
-				</tr>
-				
+EOD;
+	$html_docs2 = <<<EOD
 			</tbody>
 		</table>
 
 	</div>
 EOD;
-	print($html_docs);
 
+	require './conf/db_connect.php';
+	$sql = $db->prepare("SELECT url,name,point from question;");	
+	$sql->execute();
+
+	print($html_docs1);
+	foreach($sql as $row){
+		print "<tr>
+				<td><a href=\"./questions/${row[0]}\">${row[1]}</a></td>
+				<td>${row[2]}</td>
+				<td class=\"text-success\">--</td>
+				</tr>";
+	}
+	print($html_docs2);
 }
 
 function f()

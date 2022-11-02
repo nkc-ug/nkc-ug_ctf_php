@@ -21,7 +21,7 @@
         },
         {
             "name": "php",
-            "image": "386040690284.dkr.ecr.us-west-2.amazonaws.com/php:latest",
+            "image": "386040690284.dkr.ecr.us-west-2.amazonaws.com/php:latest"
         },
         {
             "name": "mysql",

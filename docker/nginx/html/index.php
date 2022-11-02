@@ -1,6 +1,6 @@
 <?php 
 	require_once './templates.php'; 
-
+		
 ?>
 
 <!--ヘッダー部分呼び出し-->

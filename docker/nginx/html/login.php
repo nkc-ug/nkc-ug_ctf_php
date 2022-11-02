@@ -6,9 +6,9 @@ session_start();
 $id = $_POST['id'];
 $password = $_POST['password'];
 
-$sql = "SELECT * FROM users WHERE id = id";
+$sql = "SELECT id,password,name FROM users WHERE id = :uid";
 $stmt = $db->prepare($sql);
-$stmt->bindValue(':id', $id,PDO::PARAM_INT);
+$stmt->bindValue(':uid', $id,PDO::PARAM_INT);
 $stmt->execute();
 $member = $stmt->fetch();
 
