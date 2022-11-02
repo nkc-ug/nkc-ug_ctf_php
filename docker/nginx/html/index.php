@@ -1,6 +1,9 @@
 <?php 
+	session_start();
+	$token = 'random_char'; //トークン生成、本番ではランダムな文字列を入れてます
+	$_SESSION['token'] = $token; //$_SESSIONにトークンを代入
 	require_once './templates.php'; 
-		
+	
 ?>
 
 <!--ヘッダー部分呼び出し-->
